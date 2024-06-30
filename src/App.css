@@ -13,6 +13,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 30vw;
+  height: 50vh;
+  border: 2px solid black;
 }
 
 .buttons {
@@ -20,20 +23,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .cal-col {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.functions {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-}
-
-* {
-  border: 2px solid black;
+  width: 100%;
 }
