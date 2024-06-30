@@ -1,21 +1,37 @@
-import { React } from "react";
+import { React, useState } from "react";
 import './App.css';
 
 function App() {
+
+  const [ input, setInput ] = useState("");
+
+  const output = document.getElementById("output");
+
+  const handleClear = () => {
+    output.textContent = "";
+  }
+
+  const handleNumber = (event) => {
+    const value = event.target.textContent;
+    output.textContent += value;
+    setInput(output.textContent);
+    console.log(value);
+  }
+
   return (
     <div className="App">
       <div className="calculator">
         <div id="display">
-          0
+          <p id="output">{input}</p>
         </div>
         <div className="buttons">
           <div className="cal-col">
-            <button id="clear">Clear</button>
+            <button onClick={handleClear} id="clear">Clear</button>
             <button id="divide">/</button>
             <button id="multiply">*</button>
           </div>
           <div class="cal-col">
-            <button id="1">1</button>
+            <button onClick={handleNumber} id="1">1</button>
             <button id="2">2</button>
             <button id="3">3</button>
             <button id="subtract">-</button>
