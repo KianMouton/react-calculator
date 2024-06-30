@@ -1,21 +1,31 @@
 import { React, useState } from "react";
+import { evaluate } from "mathjs"
 import './App.css';
 
 function App() {
 
   const [ input, setInput ] = useState("");
 
-  const output = document.getElementById("output");
-
+  //clears text in the input
   const handleClear = () => {
-    output.textContent = "";
+    setInput("");
   }
 
   const handleNumber = (event) => {
+    const output = document.getElementById("output");
     const value = event.target.textContent;
     output.textContent += value;
+    //set state
     setInput(output.textContent);
     console.log(value);
+    console.log(typeof(value));
+  }
+
+  const equals = () => {
+    const output = document.getElementById("output");
+    const values = input.split("").join(" ");
+    const result = evaluate(values);
+    output.textContent += "=" + result;
   }
 
   return (
@@ -27,26 +37,26 @@ function App() {
         <div className="buttons">
           <div className="cal-col">
             <button onClick={handleClear} id="clear">Clear</button>
-            <button id="divide">/</button>
-            <button id="multiply">*</button>
+            <button onClick={handleNumber} id="divide">/</button>
+            <button onClick={handleNumber} id="multiply">*</button>
           </div>
           <div class="cal-col">
             <button onClick={handleNumber} id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="subtract">-</button>
+            <button onClick={handleNumber} id="2">2</button>
+            <button onClick={handleNumber} id="3">3</button>
+            <button onClick={handleNumber} id="subtract">-</button>
           </div>
           <div className="cal-col">
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="add">+</button>
+            <button onClick={handleNumber} id="4">4</button>
+            <button onClick={handleNumber} id="5">5</button>
+            <button onClick={handleNumber} id="6">6</button>
+            <button onClick={handleNumber} id="add">+</button>
           </div>
           <div className="cal-col">
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
-            <button id="equals">=</button>
+            <button onClick={handleNumber} id="7">7</button>
+            <button onClick={handleNumber} id="8">8</button>
+            <button onClick={handleNumber} id="9">9</button>
+            <button onClick={equals} id="equals">=</button>
           </div>
           
         </div>
