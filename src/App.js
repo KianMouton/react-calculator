@@ -17,8 +17,6 @@ function App() {
     output.textContent += value;
     //set state
     setInput(output.textContent);
-    console.log(value);
-    console.log(typeof(value));
   }
 
   const equals = () => {
@@ -39,6 +37,7 @@ function App() {
             <button onClick={handleClear} id="clear">Clear</button>
             <button onClick={handleNumber} id="divide">/</button>
             <button onClick={handleNumber} id="multiply">*</button>
+            <button onClick={handleNumber} id="decimal">.</button>
           </div>
           <div class="cal-col">
             <button onClick={handleNumber} id="1">1</button>
