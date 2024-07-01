@@ -12,18 +12,31 @@ function App() {
   }
 
   const handleNumber = (event) => {
+    const value = event.target.textContent;
     const lastIndex = input.length - 1;
-    const arrayOfInput = input.split("");
-    const found = arrayOfInput.find((item) => item === "/" || item === "*" || item === "-" || item === "+");
+
     if (input === 0) {
-      return setInput(event.target.textContent);
-    } else if (input === "0" && event.target.textContent === "0") {
-      return;
-    } else if (input[lastIndex] === "." && event.target.textContent === "." && found) {
+      return setInput(value);
+    } else if (input === "0" && value === "0") {
       return;
     }
-      setInput(input + event.target.textContent);
-  }
+
+    if (value === ".") {
+      const currentNumber = input.split(/[-+/*]/).pop();
+      if (currentNumber.includes(".")) {
+        return;
+      }
+    }
+
+    if (value === "-" || value === "+" || value === "/" || value === "*") {
+      if (input[lastIndex] === "-" || input[lastIndex] === "+" || input[lastIndex] === "/" || input[lastIndex] === "*") {
+        return;
+      }
+    }
+
+    setInput(input + value);
+    }
+
   const equals = () => {
     const result = evaluate(input);
     setInput(result);
