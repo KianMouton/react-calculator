@@ -4,38 +4,36 @@ import './App.css';
 
 function App() {
 
-  const [ input, setInput ] = useState("");
-  const [ previous, setPrevious ] = useState("");
+  const [ input, setInput ] = useState(0);
 
   //clears text in the input
   const handleClear = () => {
-    setInput("");
-    setPrevious("");
+    setInput(0);
   }
 
   const handleNumber = (event) => {
-    const output = document.getElementById("output");
-    const value = event.target.textContent;
-    output.textContent += value;
-    //set state
-    setInput(output.textContent);
+    const lastIndex = input.length - 1;
+    const arrayOfInput = input.split("");
+    const found = arrayOfInput.find((item) => item === "/" || item === "*" || item === "-" || item === "+");
+    if (input === 0) {
+      return setInput(event.target.textContent);
+    } else if (input === "0" && event.target.textContent === "0") {
+      return;
+    } else if (input[lastIndex] === "." && event.target.textContent === "." && found) {
+      return;
+    }
+      setInput(input + event.target.textContent);
   }
-
   const equals = () => {
-    const output = document.getElementById("output");
-    const previousValue = document.getElementById("previous");
-    const values = input;
-    const result = evaluate(values);
-    output.textContent += "=";
-    previousValue.textContent = result;
+    const result = evaluate(input);
+    setInput(result);
   }
 
   return (
     <div className="App">
       <div className="calculator">
-        <div id="display">
-          <p id="output">{input}</p>
-          <p id="previous">{previous}</p>
+        <div id="output">
+          <p id="display">{input}</p>
         </div>
         <div className="buttons">
           <div className="cal-col">
