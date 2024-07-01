@@ -52,8 +52,7 @@ function App() {
           <div className="cal-col">
             <button onClick={handleClear} id="clear">Clear</button>
             <button onClick={handleNumber} id="divide">/</button>
-            <button onClick={handleNumber} id="multiply">*</button>
-            <button onClick={handleNumber} id="decimal">.</button>
+            <button onClick={handleNumber} id="multiply">*</button> 
           </div>
           <div class="cal-col">
             <button onClick={handleNumber} id="zero">0</button>
@@ -67,14 +66,14 @@ function App() {
             <button onClick={handleNumber} id="five">5</button>
             <button onClick={handleNumber} id="six">6</button>
             <button onClick={handleNumber} id="add">+</button>
+            <button onClick={equals} id="equals">=</button>
           </div>
           <div className="cal-col">
             <button onClick={handleNumber} id="seven">7</button>
             <button onClick={handleNumber} id="eight">8</button>
             <button onClick={handleNumber} id="nine">9</button>
-            <button onClick={equals} id="equals">=</button>
+            <button onClick={handleNumber} id="decimal">.</button>
           </div>
-          
         </div>
       </div>
     </div>
